@@ -1,0 +1,95 @@
+body {
+    /* Set line height to 1.5 times the font size
+         and use the OS's UI font as the website font
+       */
+}
+
+img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
+main {
+    max-width: 100ch;
+    margin-inline: auto;
+    padding: 1em;
+}
+/* Make <ul>/<li> elements behave like contents so all links show in a row */
+nav ul,
+nav li {
+  display: contents;
+}
+
+/* Style the nav bar as a horizontal flex container with a bottom border */
+nav {
+  display: flex;
+  border-bottom: 1px solid oklch(80% 3% 200); /* Soft accent color line */
+  margin-bottom: 1em; /* Adds space below nav */
+}
+
+/* Style each navigation link */
+nav a {
+  flex: 1; /* Makes all links equally wide */
+  text-decoration: none; /* Removes underlines */
+  color: inherit; /* Uses current text color */
+  text-align: center; /* Centers link text */
+  padding: 0.5em; /* Adds vertical space */
+}
+
+/* Highlight the current page’s link with a thicker accent line */
+#current {
+  border-bottom: 0.4em solid oklch(90% 3% 200); /* Bright accent */
+  padding-bottom: 0.1em;
+}
+
+/* On hover, add a matching accent-colored line and subtle highlight */
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: oklch(from var(--color-accent) 95% 5% h); /* Light background effect */
+}
+
+/* Accent color setup for matching and customization */
+:root {
+  --color-accent: oklch(65% 50% 0); /* You can change this value for a different color theme */
+}
+form {
+    display: grid;
+    grid-template-columns: auto 1fr; /* label column and input column */
+    gap: 1em;                        /* space between rows */
+  }
+  form label {
+    display: contents; /* removes label box so text and input go side by side */
+  }
+  form input,
+  form textarea {
+    grid-column: 2;    /* make inputs appear in second column */
+    width: 100%;       /* fill the available space */
+  }
+  form button {
+    grid-column: 1 / -1; /* makes button span whole row */
+  }
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  }
+  .projects {
+    gap: 1em; /* Adds spacing between the articles */
+  }
+  .projects article {
+    display: grid;
+    grid-template-rows: subgrid;
+  }
+  .projects h2 {
+    margin: 0; /* Removes extra spacing above/below headings */
+  }
+  h1 {
+    font-size: 400%;        /* Make page title stand out */
+  }
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;       /* Reduce vertical spacing on headings */
+    text-wrap: balance;     /* Prevent uneven heading lines */
+  }
+      
+  
+  

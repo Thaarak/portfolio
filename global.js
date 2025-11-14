@@ -18,9 +18,9 @@ currentLink?.classList.add('current');
 
 // Array of pages for the navigation menu
 let pages = [
-    { url: '', title: 'Home' },
-    { url: 'projects/', title: 'Projects' },
-    { url: 'contact/', title: 'Contact' },
+    { url: 'index.html', title: 'Home' },
+    { url: 'projects/index.html', title: 'Projects' },
+    { url: 'contact/index.html', title: 'Contact' },
     { url: 'https://github.com/Thaarak', title: 'GitHub' },
     { url: 'https://drive.google.com/file/d/1aN325M610I_HJYvvFylgdWz8b7_Db5cn/view?usp=sharing', title: 'Resume' }
     // Add more pages as needed

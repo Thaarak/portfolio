@@ -3,6 +3,8 @@ const BASE_PATH = (location.hostname === "localhost" || location.hostname === "1
   : "/portfolio/";         // GitHub Pages repo name
 
 console.log('IT\'S ALIVE!');
+console.log('BASE_PATH:', BASE_PATH);
+console.log('Current location:', location.href);
 
 function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
@@ -67,6 +69,7 @@ for (let p of pages) {
     let a = document.createElement('a');
     // Use BASE_PATH for relative URLs, keep full URLs as-is
     a.href = url.startsWith('http') ? url : BASE_PATH + url;
+    console.log(`${title} link:`, a.href);
     a.textContent = title;
     nav.append(a);
   }

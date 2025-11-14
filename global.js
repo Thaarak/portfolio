@@ -18,9 +18,9 @@ currentLink?.classList.add('current');
 
 // Array of pages for the navigation menu
 let pages = [
-    { url: '/', title: 'Home' },
-    { url: '/projects/', title: 'Projects' },
-    { url: '/contact/', title: 'Contact' },
+    { url: '', title: 'Home' },
+    { url: 'projects/', title: 'Projects' },
+    { url: 'contact/', title: 'Contact' },
     { url: 'https://github.com/Thaarak', title: 'GitHub' },
     { url: 'https://drive.google.com/file/d/1aN325M610I_HJYvvFylgdWz8b7_Db5cn/view?usp=sharing', title: 'Resume' }
     // Add more pages as needed
@@ -62,10 +62,11 @@ select.addEventListener('input', function(event) {
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
-    // next step: create link and add it to nav
+
     // Create link and add it to nav
     let a = document.createElement('a');
-    a.href = url;
+    // Use BASE_PATH for relative URLs, keep full URLs as-is
+    a.href = url.startsWith('http') ? url : BASE_PATH + url;
     a.textContent = title;
     nav.append(a);
   }

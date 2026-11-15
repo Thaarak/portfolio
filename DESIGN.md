@@ -18,5 +18,5 @@ No animation, gradients, logo grids, fabricated metrics, or daily data feature. 
 
 - First-person introduction and research interests are a draft for Thaarak's review.
 - The research page avoids unpublished results and private repository contents.
-- No OceanOps case study is included yet: it is absent from the public repository collection reviewed for this version.
+- Morro, OceanOps, and CourseLens are selected explicitly to match the GitHub pins verified November 15, 2026. OceanOps and CourseLens now have public project pages.
 - Coverage is a researched collection, not a claim to exhaust every mention on the internet. Keep original titles and dates; don't count syndicated copies as separate independent reporting.

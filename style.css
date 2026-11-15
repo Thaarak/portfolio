@@ -247,3 +247,24 @@ a{color:inherit}
 .project-row,.coverage-entry{break-inside:avoid}
 }
 
+
+/* Portrait and copy follow the same left-to-right order in the HTML. */
+.introduction { grid-template-columns: 240px minmax(0, 1fr); }
+.climate-photo { margin: 28px 0 0; }
+.climate-photo img { width: 100%; height: auto; }
+.coverage-section { display: block; }
+.coverage-section > h2 { margin-bottom: 30px; }
+.coverage-entry { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; align-items: start; margin-bottom: 44px; }
+.coverage-image { margin: 0; }
+figure.coverage-image img { width: 100%; height: 165px; object-fit: contain; background: var(--wash); }
+.coverage-image figcaption { font-size: .72rem; margin-top: 8px; }
+.coverage-image figcaption a { color: var(--muted); }
+@media (max-width: 800px) {
+  .introduction { grid-template-columns: 190px minmax(0, 1fr); }
+  .coverage-entry { grid-template-columns: 180px minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 600px) {
+  .coverage-entry { display: block; }
+  .coverage-image { margin-bottom: 18px; }
+  figure.coverage-image img { height: 220px; }
+}

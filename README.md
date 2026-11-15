@@ -1,6 +1,6 @@
 # Thaarak Sriram — portfolio
 
-A static personal website: About, Projects, Research, Coverage, and Contact, with seven project detail pages. Plain HTML and CSS; no browser JavaScript, package installation, third-party fonts, or API keys.
+A static personal website: About, Projects, Research, Coverage, and Contact, with nine project detail pages. Plain HTML and CSS; no browser JavaScript, package installation, third-party fonts, or API keys.
 
 ## Preview
 
@@ -13,6 +13,7 @@ Open http://127.0.0.1:4173. All links are relative, so the same files work at `/
 
 ## Edit
 
+- `content/selected-projects.json`: homepage selection, matching the three GitHub pins checked November 15, 2026.
 - `content/projects.json`: project descriptions, contributions, images, and demo links.
 - `content/coverage.json`: article metadata and original publisher links, grouped by reporting, announcements, and conversations.
 - `scripts/build.py`: shared HTML layout and About, Research, and Contact copy.

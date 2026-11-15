@@ -29,3 +29,11 @@ Google search was attempted but returned a CAPTCHA. Search-index results and pub
 ## Research
 
 The public profile supports the fields of study and research interests. Lab membership: https://dstl.ucsd.edu/. The UCSB capstone appears on page 11 of https://www.summer.ucsb.edu/sites/default/files/documents/SRA/2024%20SRA%20Program.pdf. No publication acceptance or unpublished numerical results are claimed.
+
+## November 15 revision: pins and photographs
+
+GitHub's pinnedItems API returned Thaarak/morro, A-Choudhari/LaHacks26, and dstl-lab/CourseLens, in that order. Both newly included repositories were verified public; descriptions and team attribution come from their READMEs. OceanOps' screenshot comes from docs/images/mission-control.png. CourseLens' project-list graphic is an explanatory workflow, not a screenshot.
+
+Every coverage entry records its local image, descriptive alt text, attribution, and source URL in content/coverage.json. Original download URLs are recorded in content/media-sources.json. The homepage uses Quest's Youth Climate Summit group photograph. Images remain locally served; no third-party image requests are needed at page load.
+
+The school-board photograph was extracted unchanged from the second page of the LVJUSD/Quest press release and credited to LVJUSD. Newspaper previews show the matching pages of their linked editions. Patch's program photograph and scholarship group photograph were captured from their actual image elements; the latter is credited to Ron Essex Photography. The newsletter has no robotics photo, so its own City of Livermore publisher image is used and labeled. Diablo's image could not be retrieved because its server returned HTTP 429; that entry and the Innovation Tri-Valley announcement use a clearly labeled related summit photograph. The Quest video entry uses the photo Quest itself places alongside that coverage, not a purported video still. My Climate Story uses the portrait accompanying the named story.

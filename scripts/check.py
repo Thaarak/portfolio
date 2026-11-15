@@ -42,5 +42,12 @@ projects=json.loads((ROOT/'content/projects.json').read_text())
 assert len({p['slug'] for p in projects}) == len(projects)
 coverage=json.loads((ROOT/'content/coverage.json').read_text())
 assert len({c['url'] for c in coverage}) == len(coverage)
+selected=json.loads((ROOT/'content/selected-projects.json').read_text())
+assert len(selected) == 3 and len(set(selected)) == 3
+assert set(selected).issubset({p['slug'] for p in projects})
+for c in coverage:
+    assert c['image_alt'] and c['image_credit'] and c['image_source'].startswith('https://')
+    assert (ROOT/'images'/c['image']).is_file(), c['title']
+    assert c['image_width'] > 0 and c['image_height'] > 0
 if errors: raise SystemExit('\n'.join(errors))
 print(f'PASS: {len(pages)} pages; internal links, images, fragments, landmarks, metadata; {len(projects)} projects and {len(coverage)} unique coverage links.')

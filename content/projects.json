@@ -1,0 +1,125 @@
+[
+  {
+    "slug": "morro",
+    "name": "Morro",
+    "area": "Climate",
+    "repo": "morro",
+    "summary": "Forecasting droughts and cyclones, then comparing simulated cloud-seeding interventions.",
+    "image": "morro.png",
+    "alt": "Four maps comparing precipitation changes under simulated cloud-seeding methods",
+    "caption": "A comparison of four intervention methods in a simulated Middle East drought.",
+    "body": "Morro pairs ten-day weather forecasts with a dashboard for comparing possible interventions. It uses GraphCast and NVIDIA Earth2Studio, with classifiers that flag drought severity and cyclone formation.",
+    "contribution": "I worked on the physics-based perturbation pipeline and trained the Random Forest classifiers used to detect drought severity and cyclone formation. The team built Morro at TreeHacks 2026.",
+    "context": "Winner of a Stanford Ecopreneurship Sustainability award at TreeHacks 2026. Built with Tej Kosaraju and Kieran P.",
+    "limits": "This is a hackathon simulation. Changes in a forecast are not evidence that an intervention will work in the real atmosphere.",
+    "links": [
+      [
+        "Try the dashboard",
+        "https://graphcastdeploy.vercel.app/"
+      ],
+      [
+        "Devpost",
+        "https://devpost.com/software/morro"
+      ],
+      [
+        "Watch the demo",
+        "https://youtu.be/BBR3-OXCjtU"
+      ]
+    ]
+  },
+  {
+    "slug": "triton-hub",
+    "name": "Triton Hub",
+    "area": "Student tools",
+    "repo": "Triton-Hub",
+    "summary": "Canvas assignments, academic email, and personal deadlines in one student dashboard.",
+    "image": "triton-hub.png",
+    "alt": "Triton Hub demo dashboard showing sample coursework and deadlines",
+    "caption": "The public demo uses fictional courses and messages; no sign-in is needed.",
+    "body": "Student deadlines arrive in several places. Triton Hub brings Canvas coursework, announcements, academic email, and a personal calendar into a single workspace.",
+    "contribution": "I integrated live Canvas data into the assignment and announcement views, and built calendar event persistence and completion tracking with Supabase.",
+    "context": "Built with Rayirth Dinesh, Siddharth Maddikayala, and shrivassudharsan1.",
+    "limits": "The public demo uses sample data. Connecting a real student workspace requires separate setup.",
+    "links": [
+      [
+        "Try the interactive demo",
+        "https://triton-hub-showcase.vercel.app/demo"
+      ]
+    ]
+  },
+  {
+    "slug": "arnold",
+    "name": "Arnold",
+    "area": "AI interfaces",
+    "repo": "arnold-showcase",
+    "summary": "A fitness journal that turns a description of a meal or workout into an entry you can review.",
+    "image": "arnold.png",
+    "alt": "Arnold displaying a meal draft with portions and nutrition estimates",
+    "caption": "Meal entries are reviewed before they are saved to the journal.",
+    "body": "Describe what you ate or how you trained, check what Arnold understood, then save the entry. The public showcase includes a food and exercise catalog and keeps journal entries in the browser.",
+    "contribution": "I extended the team\u2019s hackathon prototype with plain-English meal and workout tracking, USDA food lookup, exercise search, and voice interaction. For the showcase, I rebuilt the review-and-save flow, portion conversion, and mobile layout.",
+    "context": "The original prototype was built with Shrish, Kenny, and Jello at the MCP AI Agent Hackathon in July 2025. The public repository credits additional contributors.",
+    "limits": "Nutrition values are estimates. The local demo needs no API keys; live integrations are optional.",
+    "links": []
+  },
+  {
+    "slug": "wendy",
+    "name": "Wendy",
+    "area": "AI interfaces",
+    "repo": "wendy-showcase",
+    "summary": "A wedding-planning workspace for venue shortlists, inquiry drafts, and guest RSVPs.",
+    "image": "wendy.png",
+    "alt": "Wendy planning chat with prompts for venue search and guest RSVPs",
+    "caption": "The showcase uses fictional venues and previews inquiries without sending them.",
+    "body": "Wendy keeps venue search, guest lists, and planning conversations together. You can set a budget and guest count, shortlist venues, and draft an inquiry using the details already in the conversation.",
+    "contribution": "I built the venue-search tool, connected it to chat, and implemented the reservation-request workflow that collects event details and drafts an inquiry. I also added a self-contained showcase and a mobile layout.",
+    "context": "Original team: Thaarak Sriram, Shrish Premkrishna, Aryaman Gandhi, and Kenny.",
+    "limits": "The demo runs locally with fictional data. It does not send email or make bookings.",
+    "links": []
+  },
+  {
+    "slug": "solar-registry-screening",
+    "name": "Solar Registry Screening",
+    "area": "Climate",
+    "repo": "solar-registry-screening",
+    "summary": "An explainable pipeline that turns solar installation records into a ranked shortlist.",
+    "image": "",
+    "alt": "",
+    "caption": "",
+    "body": "The pipeline validates registry exports, applies qualification filters, and ranks the remaining installations with explicit scoring rules. Each result includes the points and reasons behind its score.",
+    "contribution": "I built ingestion and validation, deterministic ranking, optional geospatial enrichment, and reporting. The public example uses five fictional installations and a fixed scoring date so its results can be reproduced.",
+    "context": "Python, Pydantic, PostgreSQL, and optional model-assisted scoring.",
+    "limits": "The public repository contains synthetic examples. The scores illustrate a screening method; they are not investment recommendations.",
+    "links": []
+  },
+  {
+    "slug": "dstl-chat",
+    "name": "DSTL Chat",
+    "area": "Learning projects",
+    "repo": "dstl-onboarding-chat",
+    "summary": "A small chat application with saved conversations, formatted code, and a local demo.",
+    "image": "dstl-chat.png",
+    "alt": "DSTL Chat showing saved conversations and a Python example",
+    "caption": "A demo conversation with saved history and formatted code.",
+    "body": "Built during onboarding at UC San Diego\u2019s Data Science Teaching and Learning Lab, this app lets you start a conversation, ask follow-ups, and reopen it later.",
+    "contribution": "I extended the lab starter by connecting the React interface to the Python API, adding saved history and new chats, integrating Gemma 3, and rendering Markdown. The showcase adds a key-free demo and retry handling.",
+    "context": "An extension of the DSTL starter repository, using React, FastAPI, and SQLite.",
+    "limits": "The demo uses built-in replies. Live Gemma responses require a National Research Platform key.",
+    "links": []
+  },
+  {
+    "slug": "flask-reddit",
+    "name": "Flask Reddit",
+    "area": "Learning projects",
+    "repo": "flask-reddit-demo",
+    "summary": "A small link-sharing feed with voting, hidden posts, and persistent storage.",
+    "image": "flask-reddit.png",
+    "alt": "A dog-link feed with voting controls and hidden posts",
+    "caption": "A deliberately small, server-rendered application.",
+    "body": "A Reddit-style feed for sharing dog links. Submit a URL, vote on a post, or move it into a hidden list and restore it later.",
+    "contribution": "I extended the DSTL onboarding starter with link submission, ranking, hide-and-restore actions, and SQLite persistence.",
+    "context": "Python, Flask, SQLite, and server-rendered HTML. Starter code and exercise by the DSTL Lab.",
+    "limits": "This is a local learning project.",
+    "links": []
+  }
+]

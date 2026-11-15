@@ -32,6 +32,6 @@ Checks internal links, image paths, fragment targets, page metadata, and landmar
 
 ## Hosting
 
-The existing GitHub Pages site is https://thaarak.github.io/portfolio/. This draft is developed on `codex/portfolio-v1`; pushing that branch does not replace the live site. Merge to the configured Pages source branch when ready to publish.
+The live site is https://thaarak.github.io/portfolio/. GitHub Pages publishes the repository root from `main`. The `.nojekyll` file serves the generated HTML directly. Develop changes on `codex/portfolio-v1`, run the build and checks, then merge to `main` to publish.
 
 See `SOURCES.md` for content provenance and `DESIGN.md` for the first-version design rationale.

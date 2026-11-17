@@ -1,39 +1,44 @@
-# Content provenance
+# Where the content comes from
 
-Reviewed November 14, 2026 (America/Los_Angeles).
+Last reviewed November 16, 2026.
 
-## Public projects
+## About and Research
 
-Project content and images come from the READMEs and `docs/` directories in the repositories linked in `content/projects.json`. Thaarak's current profile is https://github.com/Thaarak/Thaarak. Team credit is preserved; original team code and showcase extensions are distinguished. Morro's individual contribution is also documented on https://www.linkedin.com/in/thaarak-sriram/.
+- Fields of study and interests: the public profile at https://github.com/Thaarak/Thaarak.
+- Lab membership: https://dstl.ucsd.edu/ lists Thaarak; Duncan Watson-Parris's public CV lists him as a student (https://duncanwp.github.io/CV_summary.html).
+- Dates in "Lately" (lab start dates, internship, enrollment) come from Thaarak's resume and public LinkedIn profile. The TreeHacks and LA Hacks months match the repositories' first commits.
+- The marine cloud brightening description is limited to the topic. It contains no results and nothing from the private repository.
+- SIGCSE TS 2027: "The Edit Is Not the End: CourseLens for Reviewing AI-Proposed Course Updates" is listed under Accepted Papers, with the author order used here, at https://conf.researchr.org/track/sigcse-ts-2027/sigcse-ts-2027-Papers-1 (checked November 16, 2026). The symposium runs February 17 to 20, 2027, in Sacramento.
+- AGU 2023: title, author order and abstract ID ED41C-0921 from https://agu.confex.com/agu/fm23/meetingapp.cgi/Paper/1449199.
+- AGU 2024: title and first three authors from the NASA ADS listing, https://ui.adsabs.harvard.edu/abs/2024AGUFM.ED01...2P/abstract. **The full author list was not retrieved; confirm it before relying on "et al."**
+- UCSB capstone: page 11 of https://www.summer.ucsb.edu/sites/default/files/documents/SRA/2024%20SRA%20Program.pdf.
 
-The existing portrait was already in this portfolio repository. `portrait.jpg` is a smaller copy for the web. Screenshots are copied from public repositories, not from private apps.
+## Projects
 
-The 2023 robotics fork has no README; only its status as a team-code fork is stated. The GravitechX student leadership page corroborates membership: https://gravitechx.weebly.com/student-leads.html.
+Descriptions, contributions, team credits and screenshots come from the READMEs and `docs/` folders of the public repositories linked on the page. Team credit is kept, and work on the original team project is distinguished from later showcase work. The solar pipeline's table reproduces the demo output shown in its README. The CourseLens figure is a typeset title block, not a screenshot.
 
-## Coverage
+## Press
 
-The original article titles, publishers, dates, and URLs are in `content/coverage.json`. Descriptions are short original summaries, not copied article text. Reporting, institutional announcements, and video appearances are separated. No scraped contact directories are included.
+Titles, publishers, dates and links are in `content/press.json`. The story summaries are original, written in the first person, and are not copied from the articles.
 
-- Patch's climate program feature was opened and its publication date checked (March 31, 2025; updated April 1).
-- Pleasanton Weekly print editions confirm the climate-literacy report and the innovation column.
-- The Independent's November 14, 2024 report is corroborated by its print PDF: https://bloximages.chicago2.vip.townnews.com/independentnews.com/content/tncms/assets/v3/editorial/0/01/001ce326-f08c-5b10-be7b-40934820cb0b/67350c8f4775e.file.pdf
-- The Independent's November 9, 2023 award report links to the original print PDF.
-- Innovation Tri-Valley's original announcement was opened and checked.
-- Diablo's title, author, date, original URL, and mention were also corroborated by the author's indexed article listing: https://muckrack.com/hannah-craddick-1/articles
-- Quest's coverage page links to the original Patch and Independent stories and the National Climate Storytelling video: https://quest-science.org/press-coverage/
-- My Climate Story's collection links directly to the pair's video: https://my-climate-story.org/get-inspired/
-- Dates not provided for video appearances are explicitly left unspecified.
+- The pull quote on the home page ("Cities can't fix what they can't measure") is attributed to Thaarak and Shrish Premkrishna in Civic Science Media Lab's description of their talk: https://www.youtube.com/watch?v=z49_b6s5FuM (published May 2, 2025). The 14°F figure and the summit's hosts come from the same description.
+- Patch's profile: publication date checked (March 31, 2025).
+- "Students lead LVJUSD toward climate literacy": the web version (December 19, 2024) is linked; the same article ran in the Pleasanton Weekly print edition of January 3, 2025, page 8.
+- The Independent, November 14, 2024, is corroborated by its print PDF. The November 9, 2023 report links to the print PDF, page 7.
+- "Invigorating innovation": the web version (November 2, 2023) is linked; it also ran in print on November 3.
+- The resolution's date and the names of the four students come from the LVJUSD and Quest joint press release of November 7, 2024.
+- Diablo Magazine: title, author and date corroborated by https://muckrack.com/hannah-craddick-1/articles.
+- Quest's own list of coverage: https://quest-science.org/press-coverage/.
 
-Google search was attempted but returned a CAPTCHA. Search-index results and publisher pages were used to continue discovery. Some publishers restrict automated access; do not interpret that as proof that a reader-facing link is broken.
+Found in the search and left out: social media posts, event listings, athletics and cricket statistics pages, and people-directory pages. A segment on ABC7 News is mentioned on LinkedIn but no link to it was found.
 
-## Research
+## Photographs
 
-The public profile supports the fields of study and research interests. Lab membership: https://dstl.ucsd.edu/. The UCSB capstone appears on page 11 of https://www.summer.ucsb.edu/sites/default/files/documents/SRA/2024%20SRA%20Program.pdf. No publication acceptance or unpublished numerical results are claimed.
+- `images/portrait.jpg`: a web-sized copy of the portrait already in this repository (`images/Thaarak_Sriram.jpg`).
+- `images/press/poster.jpg` and `images/press/summit.jpg`: Quest Science Center, from its press coverage page.
+- `images/press/board.jpg`: LVJUSD, from page 2 of the joint press release.
+- Project screenshots are copied from the public repositories and show sample data.
 
-## November 15 revision: pins and photographs
+## Typeface
 
-GitHub's pinnedItems API returned Thaarak/morro, A-Choudhari/LaHacks26, and dstl-lab/CourseLens, in that order. Both newly included repositories were verified public; descriptions and team attribution come from their READMEs. OceanOps' screenshot comes from docs/images/mission-control.png. CourseLens' project-list graphic is an explanatory workflow, not a screenshot.
-
-Every coverage entry records its local image, descriptive alt text, attribution, and source URL in content/coverage.json. Original download URLs are recorded in content/media-sources.json. The homepage uses Quest's Youth Climate Summit group photograph. Images remain locally served; no third-party image requests are needed at page load.
-
-The school-board photograph was extracted unchanged from the second page of the LVJUSD/Quest press release and credited to LVJUSD. Newspaper previews show the matching pages of their linked editions. Patch's program photograph and scholarship group photograph were captured from their actual image elements; the latter is credited to Ron Essex Photography. The newsletter has no robotics photo, so its own City of Livermore publisher image is used and labeled. Diablo's image could not be retrieved because its server returned HTTP 429; that entry and the Innovation Tri-Valley announcement use a clearly labeled related summit photograph. The Quest video entry uses the photo Quest itself places alongside that coverage, not a purported video still. My Climate Story uses the portrait accompanying the named story.
+Newsreader, by Production Type, under the SIL Open Font License 1.1 (`fonts/OFL.txt`). The two latin-subset variable files were downloaded from Google Fonts on November 16, 2026.

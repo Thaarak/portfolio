@@ -1,6 +1,6 @@
 # Thaarak Sriram — portfolio
 
-A static personal website: About, Projects, Research, Coverage, and Contact, with nine project detail pages. Plain HTML and CSS; no browser JavaScript, package installation, third-party fonts, or API keys.
+A static personal site with four pages: About, Research, Projects and Press. Plain HTML and CSS, one self-hosted typeface, no JavaScript, and nothing loaded from other servers.
 
 ## Preview
 
@@ -9,18 +9,22 @@ python3 scripts/build.py
 python3 -m http.server 4173 --bind 127.0.0.1
 ```
 
-Open http://127.0.0.1:4173. All links are relative, so the same files work at `/` or GitHub Pages' `/portfolio/` path.
+Open http://127.0.0.1:4173. All links are relative, so the same files work at `/` and at GitHub Pages' `/portfolio/` path.
 
 ## Edit
 
-- `content/selected-projects.json`: homepage selection, matching the three GitHub pins checked November 15, 2026.
-- `content/projects.json`: project descriptions, contributions, images, and demo links.
-- `content/coverage.json`: article metadata and original publisher links, grouped by reporting, announcements, and conversations.
-- `scripts/build.py`: shared HTML layout and About, Research, and Contact copy.
-- `style.css`: typography, spacing, and responsive layout.
-- `images/`: original portrait (preserved), optimized portrait, and public project screenshots.
+| To change | Edit |
+| --- | --- |
+| Home page text, the "Lately" list, the quote | `content/pages/home.html` |
+| Research page text and the list of papers and talks | `content/pages/research.html` |
+| Projects (text, figures, links) and "Smaller things" | `content/projects.json` |
+| Press stories and their sources | `content/press.json` |
+| Navigation, footer links, page descriptions | `scripts/build.py` |
+| Type, color, spacing, layout | `style.css` |
 
-Run `python3 scripts/build.py` after content or template changes and commit the generated HTML. Hosting serves these files directly; Python is only an authoring tool.
+Run `python3 scripts/build.py` after any change and commit the generated HTML with it. Python is only an authoring tool; hosting serves the files as they are.
+
+A project's figure is one of three kinds: `image` (a screenshot in `images/`), `paper` (a typeset title block) or `table` (a small results table).
 
 ## Check
 
@@ -28,10 +32,10 @@ Run `python3 scripts/build.py` after content or template changes and commit the 
 python3 scripts/check.py
 ```
 
-Checks internal links, image paths, fragment targets, page metadata, and landmark structure. Run this check after regenerating the pages.
+Checks local links, image paths and dimensions, fragment targets, page metadata and landmarks, and that no press link is listed twice.
 
 ## Hosting
 
-The live site is https://thaarak.github.io/portfolio/. GitHub Pages publishes the repository root from `main`. The `.nojekyll` file serves the generated HTML directly. Develop changes on `codex/portfolio-v1`, run the build and checks, then merge to `main` to publish.
+The live site is https://thaarak.github.io/portfolio/. GitHub Pages publishes the repository root from `main`, and `.nojekyll` makes it serve the HTML untouched. Work on a branch, run the build and the check, then merge to `main` to publish.
 
-See `SOURCES.md` for content provenance and `DESIGN.md` for the first-version design rationale.
+See `DESIGN.md` for the design reasoning and `SOURCES.md` for where the content comes from.

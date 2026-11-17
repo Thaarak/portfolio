@@ -1,160 +1,166 @@
-[
-  {
-    "slug": "morro",
-    "name": "Morro",
-    "area": "Climate",
-    "repo": "Thaarak/morro",
-    "summary": "Forecasting droughts and cyclones, then comparing simulated cloud-seeding interventions.",
-    "image": "morro.png",
-    "alt": "Four maps comparing precipitation changes under simulated cloud-seeding methods",
-    "caption": "A comparison of four intervention methods in a simulated Middle East drought.",
-    "body": "Morro pairs ten-day weather forecasts with a dashboard for comparing possible interventions. It uses GraphCast and NVIDIA Earth2Studio, with classifiers that flag drought severity and cyclone formation.",
-    "contribution": "I worked on the physics-based perturbation pipeline and trained the Random Forest classifiers used to detect drought severity and cyclone formation. The team built Morro at TreeHacks 2026.",
-    "context": "Winner of a Stanford Ecopreneurship Sustainability award at TreeHacks 2026. Built with Tej Kosaraju and Kieran P.",
-    "limits": "This is a hackathon simulation. Changes in a forecast are not evidence that an intervention will work in the real atmosphere.",
-    "links": [
-      [
-        "Try the dashboard",
-        "https://graphcastdeploy.vercel.app/"
+{
+  "lead": "Things I’ve built, mostly with friends and mostly in a hurry. Each entry says what the thing does and which part was mine.",
+  "projects": [
+    {
+      "slug": "morro",
+      "name": "Morro",
+      "meta": "TreeHacks 2026 · 1st place, Sustainability track",
+      "figure": {
+        "type": "image",
+        "src": "morro.png",
+        "width": 1500,
+        "height": 675,
+        "alt": "Four maps comparing the change in precipitation under four simulated cloud-seeding methods",
+        "caption": "Precipitation change 126 hours after seeding, for four methods, over a Middle East drought."
+      },
+      "paras": [
+        "Morro is a simulator for the people who would have to decide on a weather intervention before a disaster arrives. It forecasts ten days ahead with two AI weather models, GraphCast and NVIDIA Earth2Studio, flags droughts and forming cyclones, then replays the forecast under each of four cloud-seeding methods and ranks them by how much they help.",
+        "I built the perturbation pipeline. Each seeding method becomes a physics-calibrated change to the model’s starting atmosphere, which then carries through the full ten-day rollout. I also trained the Random Forest classifiers that detect drought severity and cyclone formation from ERA5 reanalysis data. Built with Tej Kosaraju and Kieran P."
       ],
-      [
-        "Devpost",
-        "https://devpost.com/software/morro"
+      "note": "A weekend simulation. A change in a forecast is not evidence that seeding would work in the real atmosphere.",
+      "links": [
+        ["Live demo", "https://graphcastdeploy.vercel.app/"],
+        ["Demo video", "https://youtu.be/BBR3-OXCjtU"],
+        ["Devpost", "https://devpost.com/software/morro"],
+        ["Code", "https://github.com/Thaarak/morro"]
+      ]
+    },
+    {
+      "slug": "oceanops",
+      "name": "OceanOps",
+      "meta": "LA Hacks 2026 · 1st place, ASUS Challenge",
+      "figure": {
+        "type": "image",
+        "src": "oceanops.png",
+        "width": 1440,
+        "height": 900,
+        "alt": "OceanOps mission control, with plume controls, a heat map off the California coast and modeled ocean chemistry",
+        "caption": "Mission control. The public demo runs on bundled ocean conditions."
+      },
+      "paras": [
+        "OceanOps is a shipboard planning tool for ocean alkalinity enhancement, a way of removing carbon by making seawater slightly less acidic. Change a vessel’s speed, discharge rate or feedstock and see how the modeled plume and the water chemistry respond, then plan fleet routes around marine traffic and protected areas.",
+        "My part was fleet telemetry over NATS with an HTTP fallback, the AI analysis panel, the map overlays, the simulation flow, and fixes to route rendering. Built with Akshat Choudhari and Yashmit Bhaverisetti."
       ],
-      [
-        "Watch the demo",
-        "https://youtu.be/BBR3-OXCjtU"
+      "note": "A planning prototype. The demo’s chemistry thresholds, plume and carbon estimates are illustrative.",
+      "links": [
+        ["Interactive demo", "https://oceanops.vercel.app"],
+        ["Code", "https://github.com/A-Choudhari/LaHacks26"]
       ]
-    ]
-  },
-  {
-    "slug": "oceanops",
-    "name": "OceanOps",
-    "area": "Climate",
-    "repo": "A-Choudhari/LaHacks26",
-    "summary": "A shipboard planning prototype for exploring ocean alkalinity, plume simulations, and fleet routes.",
-    "image": "oceanops.png",
-    "alt": "OceanOps mission control with ocean chemistry, plume controls, and a coastal map",
-    "caption": "The public showcase uses bundled ocean conditions and illustrative plume simulations.",
-    "body": "OceanOps lets you change a vessel\u2019s speed, discharge rate, or feedstock and compare the modeled plume. A map brings together sample fleet routes, marine traffic, and protected areas.",
-    "contribution": "My hackathon contributions included NATS fleet telemetry with an HTTP fallback, AI analysis, map overlays, simulation flow, and fixes to route rendering.",
-    "context": "Built with Akshat Choudhari and Yashmit Bhaverisetti at LA Hacks 2026. Winner of the ASUS Challenge.",
-    "limits": "This is a planning prototype. The public demo\u2019s chemistry thresholds, plume, and carbon estimates are illustrative, not operational guidance.",
-    "links": [
-      [
-        "Try the interactive demo",
-        "https://oceanops.vercel.app"
+    },
+    {
+      "slug": "courselens",
+      "name": "CourseLens",
+      "meta": "Data Science Teaching and Learning Lab · paper at SIGCSE TS 2027",
+      "figure": {
+        "type": "paper",
+        "title": "The Edit Is Not the End",
+        "subtitle": "CourseLens for Reviewing AI-Proposed Course Updates",
+        "authors": "Andrew Yang, Susana Haing, Thaarak Sriram, Chengyun Xu, Zhiqing Wang, Sam Lau",
+        "venue": "SIGCSE Technical Symposium 2027, Sacramento",
+        "caption": "The paper CourseLens accompanies."
+      },
+      "paras": [
+        "Instructors have started asking AI coding agents to update whole courses: a new library version, a new dataset, a changed syllabus. The agent edits dozens of files, and someone has to check them before students see them. CourseLens lays the proposed edits out in the order the course is taught, shows each one in the rendered lecture or assignment, and uses the agent’s activity log to mark which files it changed, which it only checked, and which it never opened.",
+        "I’m one of the paper’s six authors and part of the team that built the tool, with Andrew Yang, Susana Haing, Chengyun Xu, Zhiqing Wang and Sam Lau."
+      ],
+      "note": "CourseLens never edits course files and doesn’t judge whether a change is correct. The instructor does.",
+      "links": [
+        ["Code", "https://github.com/dstl-lab/CourseLens"],
+        ["Paper listing", "https://conf.researchr.org/track/sigcse-ts-2027/sigcse-ts-2027-Papers-1"]
       ]
-    ]
-  },
-  {
-    "slug": "courselens",
-    "name": "CourseLens",
-    "area": "Research tools",
-    "repo": "dstl-lab/CourseLens",
-    "summary": "Review AI-proposed course updates in teaching order, with changes shown in the materials students see.",
-    "image": "",
-    "alt": "",
-    "caption": "",
-    "body": "CourseLens helps instructors review changes proposed by coding agents. It groups course files by teaching week, previews edits in context, and uses agent activity logs to distinguish files that were changed, checked, or never opened.",
-    "contribution": "I am part of the UC San Diego research team behind CourseLens. Our tool supports reviewing changes, marking their status, and identifying course materials that need another look.",
-    "context": "Created with Andrew Hudson Yang, Susana Haing, Chengyun Xu, Zhiqing Wang, and Sam Lau at UC San Diego. The repository includes a fictional course and sample agent log for trying the review workflow.",
-    "limits": "CourseLens supports human review; it does not judge whether an edit is correct or modify course files. It runs locally.",
-    "links": []
-  },
-  {
-    "slug": "triton-hub",
-    "name": "Triton Hub",
-    "area": "Student tools",
-    "repo": "Thaarak/Triton-Hub",
-    "summary": "Canvas assignments, academic email, and personal deadlines in one student dashboard.",
-    "image": "triton-hub.png",
-    "alt": "Triton Hub demo dashboard showing sample coursework and deadlines",
-    "caption": "The public demo uses fictional courses and messages; no sign-in is needed.",
-    "body": "Student deadlines arrive in several places. Triton Hub brings Canvas coursework, announcements, academic email, and a personal calendar into a single workspace.",
-    "contribution": "I integrated live Canvas data into the assignment and announcement views, and built calendar event persistence and completion tracking with Supabase.",
-    "context": "Built with Rayirth Dinesh, Siddharth Maddikayala, and shrivassudharsan1.",
-    "limits": "The public demo uses sample data. Connecting a real student workspace requires separate setup.",
-    "links": [
-      [
-        "Try the interactive demo",
-        "https://triton-hub-showcase.vercel.app/demo"
+    },
+    {
+      "slug": "triton-hub",
+      "name": "Triton Hub",
+      "meta": "A student dashboard for UC San Diego",
+      "figure": {
+        "type": "image",
+        "src": "triton-hub.png",
+        "width": 1360,
+        "height": 1050,
+        "alt": "Triton Hub dashboard showing sample coursework, email and deadlines",
+        "caption": "The public demo uses fictional courses and messages."
+      },
+      "paras": [
+        "Deadlines at UC San Diego arrive in several places at once. Triton Hub pulls Canvas assignments, grades and announcements, academic email and a personal calendar into one feed.",
+        "I wired live Canvas data into the assignment and announcement views, and built calendar events and completion tracking on Supabase. Built with Rayirth Dinesh, Siddharth Maddikayala and <a href=\"https://github.com/shrivassudharsan1\">shrivassudharsan1</a>."
+      ],
+      "note": "",
+      "links": [
+        ["Interactive demo", "https://triton-hub-showcase.vercel.app/demo"],
+        ["Code", "https://github.com/Thaarak/Triton-Hub"]
       ]
-    ]
-  },
-  {
-    "slug": "arnold",
-    "name": "Arnold",
-    "area": "AI interfaces",
-    "repo": "Thaarak/arnold-showcase",
-    "summary": "A fitness journal that turns a description of a meal or workout into an entry you can review.",
-    "image": "arnold.png",
-    "alt": "Arnold displaying a meal draft with portions and nutrition estimates",
-    "caption": "Meal entries are reviewed before they are saved to the journal.",
-    "body": "Describe what you ate or how you trained, check what Arnold understood, then save the entry. The public showcase includes a food and exercise catalog and keeps journal entries in the browser.",
-    "contribution": "I extended the team\u2019s hackathon prototype with plain-English meal and workout tracking, USDA food lookup, exercise search, and voice interaction. For the showcase, I rebuilt the review-and-save flow, portion conversion, and mobile layout.",
-    "context": "The original prototype was built with Shrish, Kenny, and Jello at the MCP AI Agent Hackathon in July 2025. The public repository credits additional contributors.",
-    "limits": "Nutrition values are estimates. The local demo needs no API keys; live integrations are optional.",
-    "links": []
-  },
-  {
-    "slug": "wendy",
-    "name": "Wendy",
-    "area": "AI interfaces",
-    "repo": "Thaarak/wendy-showcase",
-    "summary": "A wedding-planning workspace for venue shortlists, inquiry drafts, and guest RSVPs.",
-    "image": "wendy.png",
-    "alt": "Wendy planning chat with prompts for venue search and guest RSVPs",
-    "caption": "The showcase uses fictional venues and previews inquiries without sending them.",
-    "body": "Wendy keeps venue search, guest lists, and planning conversations together. You can set a budget and guest count, shortlist venues, and draft an inquiry using the details already in the conversation.",
-    "contribution": "I built the venue-search tool, connected it to chat, and implemented the reservation-request workflow that collects event details and drafts an inquiry. I also added a self-contained showcase and a mobile layout.",
-    "context": "Original team: Thaarak Sriram, Shrish Premkrishna, Aryaman Gandhi, and Kenny.",
-    "limits": "The demo runs locally with fictional data. It does not send email or make bookings.",
-    "links": []
-  },
-  {
-    "slug": "solar-registry-screening",
-    "name": "Solar Registry Screening",
-    "area": "Climate",
-    "repo": "Thaarak/solar-registry-screening",
-    "summary": "An explainable pipeline that turns solar installation records into a ranked shortlist.",
-    "image": "",
-    "alt": "",
-    "caption": "",
-    "body": "The pipeline validates registry exports, applies qualification filters, and ranks the remaining installations with explicit scoring rules. Each result includes the points and reasons behind its score.",
-    "contribution": "I built ingestion and validation, deterministic ranking, optional geospatial enrichment, and reporting. The public example uses five fictional installations and a fixed scoring date so its results can be reproduced.",
-    "context": "Python, Pydantic, PostgreSQL, and optional model-assisted scoring.",
-    "limits": "The public repository contains synthetic examples. The scores illustrate a screening method; they are not investment recommendations.",
-    "links": []
-  },
-  {
-    "slug": "dstl-chat",
-    "name": "DSTL Chat",
-    "area": "Learning projects",
-    "repo": "Thaarak/dstl-onboarding-chat",
-    "summary": "A small chat application with saved conversations, formatted code, and a local demo.",
-    "image": "dstl-chat.png",
-    "alt": "DSTL Chat showing saved conversations and a Python example",
-    "caption": "A demo conversation with saved history and formatted code.",
-    "body": "Built during onboarding at UC San Diego\u2019s Data Science Teaching and Learning Lab, this app lets you start a conversation, ask follow-ups, and reopen it later.",
-    "contribution": "I extended the lab starter by connecting the React interface to the Python API, adding saved history and new chats, integrating Gemma 3, and rendering Markdown. The showcase adds a key-free demo and retry handling.",
-    "context": "An extension of the DSTL starter repository, using React, FastAPI, and SQLite.",
-    "limits": "The demo uses built-in replies. Live Gemma responses require a National Research Platform key.",
-    "links": []
-  },
-  {
-    "slug": "flask-reddit",
-    "name": "Flask Reddit",
-    "area": "Learning projects",
-    "repo": "Thaarak/flask-reddit-demo",
-    "summary": "A small link-sharing feed with voting, hidden posts, and persistent storage.",
-    "image": "flask-reddit.png",
-    "alt": "A dog-link feed with voting controls and hidden posts",
-    "caption": "A deliberately small, server-rendered application.",
-    "body": "A Reddit-style feed for sharing dog links. Submit a URL, vote on a post, or move it into a hidden list and restore it later.",
-    "contribution": "I extended the DSTL onboarding starter with link submission, ranking, hide-and-restore actions, and SQLite persistence.",
-    "context": "Python, Flask, SQLite, and server-rendered HTML. Starter code and exercise by the DSTL Lab.",
-    "limits": "This is a local learning project.",
-    "links": []
-  }
-]
+    },
+    {
+      "slug": "solar-registry-screening",
+      "name": "Solar Registry Screening",
+      "meta": "A data pipeline in Python",
+      "figure": {
+        "type": "table",
+        "head": ["Rank", "Example plant", "Capacity", "Score"],
+        "rows": [
+          ["1", "Example Solar B", "950 kW", "72.9"],
+          ["2", "Example Solar A", "6,400 kW", "70.8"],
+          ["3", "Example Solar C", "3,200 kW", "66.7"]
+        ],
+        "caption": "Output of the bundled demo: five fictional installations go in, three qualify, each scored out of 100 by eleven rules."
+      },
+      "paras": [
+        "A public registry lists thousands of solar installations. This pipeline validates the records, filters them down to the ones that qualify, and ranks what is left with explicit rules, so every score comes with the points and reasons behind it.",
+        "The design rule is cheapest first. The deterministic ranking runs offline on registry fields alone, and only the shortlist goes on to geospatial matching or optional model-assisted scoring. Ambiguous matches are left unresolved."
+      ],
+      "note": "The public repository contains synthetic examples only. The scores illustrate a screening method, not investment advice.",
+      "links": [
+        ["Code", "https://github.com/Thaarak/solar-registry-screening"]
+      ]
+    },
+    {
+      "slug": "arnold",
+      "name": "Arnold",
+      "meta": "MCP AI Agent Hackathon, July 2025",
+      "figure": {
+        "type": "image",
+        "src": "arnold.png",
+        "width": 1280,
+        "height": 887,
+        "alt": "Arnold showing a meal draft with portions and nutrition estimates, ready for review",
+        "caption": "A meal entry waits for review before it is saved."
+      },
+      "paras": [
+        "Arnold is a fitness journal you talk to. Describe a meal or a workout in plain English, check what Arnold understood, and only then save it.",
+        "I added plain-English meal and workout logging, USDA food lookup, exercise search and the voice flow to our hackathon prototype. For the public version I rebuilt logging so it previews portions and nutrients before anything is saved. The original was built with Shrish Premkrishna, Kenny and Jello."
+      ],
+      "note": "Nutrition values are estimates.",
+      "links": [
+        ["Code", "https://github.com/Thaarak/arnold-showcase"]
+      ]
+    },
+    {
+      "slug": "wendy",
+      "name": "Wendy",
+      "meta": "A wedding-planning assistant",
+      "figure": {
+        "type": "image",
+        "src": "wendy.png",
+        "width": 1280,
+        "height": 800,
+        "alt": "Wendy’s planning chat with prompts for venue search, inquiry drafts and guest RSVPs",
+        "caption": "The demo uses fictional venues and never sends anything."
+      },
+      "paras": [
+        "Wendy keeps venue search, guest lists and planning conversations in one place. Set a budget and a guest count, shortlist venues, and it drafts an inquiry from details already in the conversation.",
+        "I built the venue-search tool, connected it to chat, and wrote the reservation-request flow that collects event details and drafts the inquiry. Built with Shrish Premkrishna, Aryaman Gandhi and Kenny."
+      ],
+      "note": "",
+      "links": [
+        ["Code", "https://github.com/Thaarak/wendy-showcase"]
+      ]
+    }
+  ],
+  "smaller": [
+    ["DSTL Chat", "https://github.com/Thaarak/dstl-onboarding-chat", "My onboarding project at the teaching lab: a chat app with saved conversations, in React, FastAPI and SQLite."],
+    ["Flask Reddit", "https://github.com/Thaarak/flask-reddit-demo", "A small link feed with voting and hidden posts. Another onboarding exercise."],
+    ["GravitechX 2023", "https://github.com/Thaarak/2023-Coding", "A fork of the Java code for my high school robotics team’s 2023 robot."],
+    ["This site", "https://github.com/Thaarak/portfolio", "Plain HTML and CSS, generated by a short Python script."]
+  ]
+}

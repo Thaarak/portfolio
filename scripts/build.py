@@ -1,48 +1,85 @@
-"""Generate dependency-free, readable HTML. Run from any directory."""
+"""Generate the site's four pages from the files in content/.
+
+Run from anywhere:  python3 scripts/build.py
+Prose for Home and Research lives in content/pages/*.html.
+Projects and press entries live in content/*.json.
+"""
 import json
+from datetime import date
+from html import escape
 from pathlib import Path
-from html import escape as e
 
 ROOT = Path(__file__).resolve().parents[1]
-projects = json.loads((ROOT / 'content/projects.json').read_text())
-coverage = json.loads((ROOT / 'content/coverage.json').read_text())
-selected_slugs = json.loads((ROOT / 'content/selected-projects.json').read_text())
-selected_projects = [next(p for p in projects if p['slug'] == slug) for slug in selected_slugs]
-NAV = [('About', ''), ('Projects', 'projects/'), ('Research', 'research/'), ('Coverage', 'coverage/'), ('Contact', 'contact/')]
+SITE = 'https://thaarak.github.io/portfolio/'
+NAME = 'Thaarak Sriram'
+EMAIL = 'thaarak.sriram@gmail.com'
+NAV = [('About', ''), ('Research', 'research/'), ('Projects', 'projects/'), ('Press', 'press/')]
+ELSEWHERE = [
+    ('Email', f'mailto:{EMAIL}'),
+    ('GitHub', 'https://github.com/Thaarak'),
+    ('LinkedIn', 'https://www.linkedin.com/in/thaarak-sriram/'),
+    ('X', 'https://x.com/SriramThaa'),
+]
+
+
+def e(text):
+    return escape(text, quote=True)
+
 
 def link(label, url):
-    return f'<a href="{e(url, quote=True)}">{e(label)}</a>'
+    return f'<a href="{e(url)}">{e(label)}</a>'
 
-def render(path, title, description, body, section):
+
+def load(name):
+    return json.loads((ROOT / 'content' / name).read_text())
+
+
+def fragment(name):
+    return (ROOT / 'content' / 'pages' / name).read_text()
+
+
+def render(path, section, description, body):
     depth = len(Path(path).parts) - 1
     base = '../' * depth or './'
-    nav = ''.join(f'<a href="{base}{url}"'+ (' aria-current="page"' if label == section else '') + f'>{label}</a>' for label, url in NAV)
-    canonical = 'https://thaarak.github.io/portfolio/' + path.replace('index.html', '')
+    title = NAME if section == 'About' else f'{section} · {NAME}'
+    nav = ''.join(
+        f'<a href="{base}{url}"' + (' aria-current="page"' if label == section else '') + f'>{label}</a>'
+        for label, url in NAV
+    )
+    elsewhere = ' · '.join(link(label, url) for label, url in ELSEWHERE)
     html = f'''<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{e(title)} — Thaarak Sriram</title>
-  <meta name="description" content="{e(description, quote=True)}">
-  <meta property="og:title" content="{e(title, quote=True)} — Thaarak Sriram">
-  <meta property="og:description" content="{e(description, quote=True)}">
+  <title>{e(title)}</title>
+  <meta name="description" content="{e(description)}">
+  <meta property="og:title" content="{e(title)}">
+  <meta property="og:description" content="{e(description)}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://thaarak.github.io/portfolio/images/portrait.jpg">
-  <link rel="canonical" href="{canonical}">
+  <meta property="og:image" content="{SITE}images/portrait.jpg">
+  <link rel="canonical" href="{SITE}{path.replace('index.html', '')}">
   <link rel="icon" href="{base}images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="{base}fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{base}style.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="site">
-    <header class="site-header">
-      <a class="name" href="{base}">Thaarak Sriram</a>
-      <nav aria-label="Main navigation">{nav}</nav>
-    </header>
-    <main id="main">{body.replace('@BASE@', base)}</main>
-    <footer class="site-footer"><span>Thaarak Sriram</span><div>{link('Email', 'mailto:thaarak.sriram@gmail.com')}{link('GitHub', 'https://github.com/Thaarak')}{link('LinkedIn', 'https://www.linkedin.com/in/thaarak-sriram/')}</div></footer>
-  </div>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="shell">
+      <a class="name" href="{base}">{NAME}</a>
+      <nav aria-label="Main">{nav}</nav>
+    </div>
+  </header>
+  <main id="main">
+{body.replace('@BASE@', base)}
+  </main>
+  <footer class="foot">
+    <div class="shell">
+      <p class="elsewhere">{elsewhere}</p>
+      <p class="where">Livermore, then La Jolla. Updated {date.today():%B %Y}.</p>
+    </div>
+  </footer>
 </body>
 </html>
 '''
@@ -50,59 +87,81 @@ def render(path, title, description, body, section):
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html)
 
-def figure(p):
-    if not p['image']: return ''
-    return f'<figure><a href="@BASE@images/{p["image"]}"><img src="@BASE@images/{p["image"]}" alt="{e(p["alt"], quote=True)}" loading="lazy" width="1200" height="750"></a><figcaption>{e(p["caption"])}</figcaption></figure>'
 
-home = '''<section class="introduction" aria-labelledby="intro-title">
-  <figure class="portrait"><img src="@BASE@images/portrait.jpg" alt="Thaarak Sriram" width="640" height="800" fetchpriority="high"><figcaption>San Diego, California</figcaption></figure>
-  <div class="intro-copy"><h1 id="intro-title">Hi, I’m Thaarak.</h1>
-    <p class="lead">I study data science and physics at UC San Diego. My work spans climate modeling, human–computer interaction, and AI evaluation.</p>
-    <p>I’m interested in how we understand complex systems, and how we make the tools built around them useful and trustworthy.</p>
-    <p>That takes a few forms: simulating weather interventions, building interfaces people can inspect, and working on climate education in my community.</p>
-    <p class="inline-links"><a href="@BASE@projects/">Explore my projects</a><a href="@BASE@contact/">Get in touch</a></p>
-  </div>
-</section>
-<section class="home-section" aria-labelledby="working-title"><h2 id="working-title">What I’m working on</h2>
-  <div><p>I do research in climate modeling and human–computer interaction, alongside building small software tools. I work primarily with Python, JAX, TypeScript, and React.</p><p>My <a href="@BASE@research/">research interests</a> connect the modeling and evaluation side of this work. The <a href="@BASE@projects/">project pages</a> collect public code, demos, and what I contributed.</p></div>
-</section>
-<section class="home-section" aria-labelledby="selected-title"><h2 id="selected-title">Selected projects</h2><div class="selected-list">'''
-for p in selected_projects:
-    home += f'<article><h3><a href="@BASE@projects/{p["slug"]}/">{e(p["name"])}</a></h3><p>{e(p["summary"])}</p></article>'
-home += '''<p><a href="@BASE@projects/">All projects</a></p></div></section>
-<section class="home-section" aria-labelledby="beyond-title"><h2 id="beyond-title">Climate work, closer to home</h2><div>
-<p>Before UC San Diego, I helped organize the Livermore Youth Climate Summit and establish the Tri-Valley Youth Climate Action Program. With three other students, I helped develop a climate-literacy resolution adopted by our school district in October 2024.</p>
-<p>The <a href="@BASE@coverage/">coverage page</a> brings together reporting on that work, award announcements, and conversations.</p><figure class="climate-photo"><img src="@BASE@images/coverage/summit.jpg" alt="Students gathered at the Livermore Youth Climate Summit" width="1280" height="720" loading="lazy"><figcaption>The Youth Climate Summit community. Photo: <a href="https://quest-science.org/press-coverage/">Quest Science Center</a>.</figcaption></figure></div></section>'''
-render('index.html', 'About', 'Data science and physics at UC San Diego. Climate modeling, human–computer interaction, and public software projects.', home, 'About')
+# Projects ------------------------------------------------------------------
 
-body = '''<header class="page-intro"><h1>Projects</h1><p class="lead">Things I’ve built, and what I learned building them.</p><p>Public projects, team collaborations, and smaller experiments. Each entry describes my contribution and links to the code.</p></header><div class="project-list">'''
-for p in projects:
-    img = f'<a class="project-image" href="@BASE@projects/{p["slug"]}/"><img src="@BASE@images/{p["image"]}" alt="{e(p["alt"], quote=True)}" loading="lazy" width="600" height="375"></a>' if p['image'] else ('<div class="project-diagram" aria-label="CourseLens review workflow"><span>Course materials</span><span>Proposed edits</span><span>Review in context</span><span>Human decision</span></div>' if p['slug'] == 'courselens' else '<div class="project-diagram" aria-label="Solar screening workflow"><span>Registry records</span><span>Qualify</span><span>Score & explain</span><span>Shortlist</span></div>')
-    body += f'<article class="project-row">{img}<div><p class="meta">{p["area"]}</p><h2><a href="@BASE@projects/{p["slug"]}/">{p["name"]}</a></h2><p>{p["summary"]}</p><a href="@BASE@projects/{p["slug"]}/">About the project</a></div></article>'
-body += '''</div><section class="reading-width"><h2>Earlier work</h2><p>I was also part of <a href="https://gravitechx.weebly.com/student-leads.html">GravitechX</a>, Livermore High School’s robotics team. My GitHub includes a <a href="https://github.com/Thaarak/2023-Coding">fork of the team’s 2023 Java robot code</a>.</p><p>This website is also <a href="https://github.com/Thaarak/portfolio">on GitHub</a>.</p></section>'''
-render('projects/index.html', 'Projects', 'Public software projects by Thaarak Sriram, with demos, screenshots, and individual contributions.', body, 'Projects')
-for i,p in enumerate(projects):
-    links = [[ 'Source code', 'https://github.com/'+p['repo']]] + p['links']
-    body = f'''<a class="back-link" href="@BASE@projects/">All projects</a><header class="page-intro"><p class="meta">{p['area']}</p><h1>{p['name']}</h1><p class="lead">{p['summary']}</p><div class="inline-links">{''.join(link(*x) for x in links)}</div></header>{figure(p)}<div class="reading-width project-copy"><h2>The project</h2><p>{p['body']}</p><h2>My contribution</h2><p>{p['contribution']}</p><h2>Context</h2><p>{p['context']}</p><p class="note">{p['limits']}</p></div>'''
-    if i+1 < len(projects):
-        nxt=projects[i+1]
-        body+=f'<p class="next-project">Next project: <a href="@BASE@projects/{nxt["slug"]}/">{nxt["name"]}</a></p>'
-    render(f'projects/{p["slug"]}/index.html', p['name'], p['summary'], body, 'Projects')
+def project_figure(p):
+    f = p['figure']
+    caption = f'<figcaption>{e(f["caption"])}</figcaption>' if f.get('caption') else ''
+    if f['type'] == 'image':
+        src = f'@BASE@images/{f["src"]}'
+        inner = (f'<a class="shot" href="{src}"><img src="{src}" alt="{e(f["alt"])}" '
+                 f'width="{f["width"]}" height="{f["height"]}" loading="lazy"></a>')
+    elif f['type'] == 'paper':
+        inner = (f'<div class="paper"><p class="t">{e(f["title"])}</p><p class="s">{e(f["subtitle"])}</p>'
+                 f'<p class="a">{e(f["authors"])}</p><p class="v">{e(f["venue"])}</p></div>')
+    else:
+        head = ''.join(f'<th scope="col">{e(h)}</th>' for h in f['head'])
+        rows = ''.join('<tr>' + ''.join(f'<td>{e(c)}</td>' for c in row) + '</tr>' for row in f['rows'])
+        inner = f'<div class="sheet"><table><thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table></div>'
+    return f'<figure>{inner}{caption}</figure>'
 
-body='''<header class="page-intro"><h1>Research</h1><p class="lead">Climate models, AI systems, and the people using them.</p></header><div class="reading-width"><section><h2>Climate modeling</h2><p>I’m interested in how physical models and machine learning can help us understand the climate, and how to evaluate what those models tell us.</p><p>My public project <a href="@BASE@projects/morro/">Morro</a> explores forecasts and simulated cloud-seeding interventions. It compares perturbed and unperturbed weather-model runs, with a dashboard for examining the differences.</p></section><section><h2>Human–computer interaction</h2><p>I also work in human–computer interaction, with an interest in evaluating AI systems and making them safer to use. I’m part of UC San Diego’s <a href="https://dstl.ucsd.edu/">Data Science Teaching and Learning Lab</a>.</p><p>Some of that interest shows up in my software: <a href="@BASE@projects/arnold/">Arnold</a> asks people to review a meal entry before saving it, and <a href="@BASE@projects/wendy/">Wendy</a> separates drafting an inquiry from sending one.</p></section><section><h2>Earlier research</h2><p>At UC Santa Barbara’s 2024 Summer Research Academies, I worked with Haeum Lee and Simran Karkhanis on <em>Soil and Solar: Analyzing the Social Barriers to Agrivoltaics Implementation in the United States</em>.</p><p>Our capstone talk is listed in the <a href="https://www.summer.ucsb.edu/sites/default/files/documents/SRA/2024%20SRA%20Program.pdf">2024 program</a> (page 11).</p></section><section><h2>From models to decisions</h2><p>The questions I keep returning to are practical: What can we check? What does a result actually show? How much should someone trust it?</p><p>For public code and demonstrations, see my <a href="@BASE@projects/">projects</a>. For research conversations, <a href="mailto:thaarak.sriram@gmail.com">email me</a>.</p></section></div>'''
-render('research/index.html','Research','Research interests in climate modeling, human–computer interaction, and AI evaluation.',body,'Research')
 
-body='''<header class="page-intro"><h1>Coverage & conversations</h1><p class="lead">A collection of stories about work I’ve been part of.</p><p>Much of this began with climate education in Livermore. These articles tell the story of a shared effort by students, mentors, and our community.</p></header>'''
-for kind in ['Reporting','Announcements','Conversations']:
-    body+=f'<section class="coverage-section"><h2>{kind}</h2><div>'
-    for c in coverage:
-        if c['kind'] != kind: continue
-        media = f'<figure class="coverage-image"><a href="{e(c["url"], quote=True)}" tabindex="-1"><img src="@BASE@images/{e(c["image"], quote=True)}" alt="{e(c["image_alt"], quote=True)}" width="{c["image_width"]}" height="{c["image_height"]}" loading="lazy"></a><figcaption>{link(c["image_credit"], c["image_source"])}</figcaption></figure>'
-        body+=f'<article class="coverage-entry">{media}<div><p class="meta">{e(c["publisher"])} <span class="date">{e(c["date"])}</span></p><h3>{link(c["title"],c["url"])}</h3><p>{e(c["summary"])}</p></div></article>'
-    body+='</div></section>'
-body+='<p class="note">The climate-storytelling appearance is also listed on <a href="https://quest-science.org/press-coverage/">Quest Science Center’s coverage page</a>. Articles remain on their publishers’ websites; some links open PDF editions.</p>'
-render('coverage/index.html','Coverage','Reporting, announcements, and conversations featuring Thaarak Sriram’s climate education and community work.',body,'Coverage')
+def projects_page():
+    data = load('projects.json')
+    body = f'<div class="shell page">\n<h1 class="vh">Projects</h1>\n<p class="lead">{e(data["lead"])}</p>\n'
+    for p in data['projects']:
+        paras = ''.join(f'<p>{para}</p>' for para in p['paras'])  # paragraphs may contain links
+        caveat = f'<p class="caveat">{e(p["note"])}</p>' if p['note'] else ''
+        links = ''.join(link(*pair) for pair in p['links'])
+        body += (f'<article class="project" id="{p["slug"]}">{project_figure(p)}'
+                 f'<div><h2>{e(p["name"])}</h2><p class="meta">{e(p["meta"])}</p>'
+                 f'{paras}{caveat}<p class="links">{links}</p></div></article>\n')
+    items = ''.join(f'<li>{link(name, url)}<span>{e(text)}</span></li>' for name, url, text in data['smaller'])
+    body += f'<section class="smaller" aria-labelledby="smaller"><h2 id="smaller">Smaller things</h2><ul class="log">{items}</ul></section>\n</div>'
+    render('projects/index.html', 'Projects',
+           'Software by Thaarak Sriram: Morro, OceanOps, CourseLens and others, with what each does and which part was his.',
+           body)
+    return len(data['projects'])
 
-body='''<header class="page-intro"><h1>Get in touch</h1><p class="lead">For a project, a research question, or a conversation.</p></header><div class="reading-width"><p>The best way to reach me is by email.</p><p class="contact-email"><a href="mailto:thaarak.sriram@gmail.com">thaarak.sriram@gmail.com</a></p><p>I’m based in San Diego and study at UC San Diego.</p><dl class="contact-links"><dt>Code</dt><dd><a href="https://github.com/Thaarak">GitHub</a></dd><dt>Professional background</dt><dd><a href="https://www.linkedin.com/in/thaarak-sriram/">LinkedIn</a></dd><dt>Elsewhere</dt><dd><a href="https://x.com/SriramThaa">X</a></dd></dl></div>'''
-render('contact/index.html','Contact','Contact Thaarak Sriram about research, software projects, and collaboration.',body,'Contact')
-print(f'Generated {5+len(projects)} pages.')
+
+# Press ---------------------------------------------------------------------
+
+def press_page():
+    data = load('press.json')
+    body = f'<div class="shell page">\n<h1 class="vh">Press</h1>\n<p class="lead">{e(data["lead"])}</p>\n'
+    count = 0
+    for s in data['stories']:
+        sources = ''
+        for src in s['sources']:
+            count += 1
+            sources += (f'<li><span class="pub">{e(src["publisher"])}</span>{link(src["title"], src["url"])}'
+                        f'<span class="detail">{e(src["detail"])}</span></li>')
+        text = f'<p class="text">{e(s["text"])}</p>' if s['text'] else ''
+        photo = ''
+        if s.get('photo'):
+            ph = s['photo']
+            photo = (f'<figure class="photo"><img src="@BASE@images/{ph["src"]}" alt="{e(ph["alt"])}" '
+                     f'width="{ph["width"]}" height="{ph["height"]}" loading="lazy">'
+                     f'<figcaption>{link(ph["credit"], ph["credit_url"])}</figcaption></figure>')
+        classes = 'story' + (' has-photo' if photo else '') + (' has-text' if text else '')
+        body += (f'<section class="{classes}" id="{s["slug"]}" aria-labelledby="{s["slug"]}-title">'
+                 f'<p class="years">{e(s["years"])}</p>'
+                 f'<div class="body"><div><h2 id="{s["slug"]}-title">{e(s["title"])}</h2>{text}'
+                 f'<ul class="sources">{sources}</ul></div>{photo}</div></section>\n')
+    body += f'<p class="aside-note">{e(data["note"])} <a href="mailto:{EMAIL}">Email me</a>.</p>\n</div>'
+    render('press/index.html', 'Press',
+           'Articles, announcements and videos about work Thaarak Sriram has been part of, grouped by story.',
+           body)
+    return count
+
+
+render('index.html', 'About',
+       'Thaarak Sriram studies data science and physics at UC San Diego and does research on climate models and on how people review the work of AI coding agents.',
+       fragment('home.html'))
+render('research/index.html', 'Research',
+       'Research by Thaarak Sriram: marine cloud brightening in a differentiable climate model, and how instructors review course updates made by AI coding agents.',
+       fragment('research.html'))
+n_projects = projects_page()
+n_sources = press_page()
+print(f'Built 4 pages: {n_projects} projects, {n_sources} press links.')

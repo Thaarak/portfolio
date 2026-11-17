@@ -1,5 +1,5 @@
 {
-  "lead": "Most of what has been written about me is about climate work in Livermore, my hometown. All of it was shared work, so the stories below are about a group of students, our mentors at Quest Science Center, and a school district that listened.",
+  "lead": "Most of what has been written about me covers climate work in Livermore, my hometown. I did all of it with other students and with mentors at Quest Science Center, so each story below is about a group.",
   "stories": [
     {
       "slug": "heat",
@@ -45,7 +45,7 @@
       "slug": "program",
       "years": "2025",
       "title": "The Tri-Valley Youth Climate Action Program",
-      "text": "A profile of the program Shrish and I helped start after the first summit, and what it had grown into by our senior year: heat mapping, school waste audits and climate education across the Tri-Valley.",
+      "text": "Patch profiled the program Shrish Premkrishna and I helped start, from the first youth summit to climate education in local schools.",
       "sources": [
         {
           "publisher": "Patch",
@@ -59,7 +59,7 @@
       "slug": "resolution",
       "years": "2024",
       "title": "A climate literacy resolution",
-      "text": "Four of us, Claire Gresham, Alexander Pepper, Shrish Premkrishna and I, wrote a climate literacy resolution for the Livermore Valley Joint Unified School District, meeting with board members, the superintendent and the teachers’ association along the way. The board adopted it on October 15, 2024.",
+      "text": "Claire Gresham, Alexander Pepper, Shrish Premkrishna and I wrote a climate literacy resolution for the Livermore Valley Joint Unified School District. We met with board members, the superintendent and the teachers’ association while drafting it, and the board adopted it on October 15, 2024.",
       "photo": {
         "src": "press/board.jpg",
         "width": 826,
@@ -93,7 +93,7 @@
       "slug": "summit",
       "years": "2023–24",
       "title": "The Livermore Youth Climate Summit",
-      "text": "In the summer of 2023 a group of students organized Livermore’s first Youth Climate Summit with Quest Science Center. That fall the planning team received the Tri-Valley 2040 Regional Visionary Award at Innovation Tri-Valley’s DreamMakers & RiskTakers awards.",
+      "text": "In the summer of 2023 a group of us organized Livermore’s first Youth Climate Summit with Quest Science Center. That fall the planning team received the Tri-Valley 2040 Regional Visionary Award at Innovation Tri-Valley’s DreamMakers & RiskTakers awards.",
       "photo": {
         "src": "press/summit.jpg",
         "width": 1280,
@@ -156,5 +156,5 @@
       ]
     }
   ],
-  "note": "Links go to the publishers’ own pages. A few open PDF editions. If you know of a story that belongs here, tell me."
+  "note": "Links go to the publishers’ own pages, and a few open PDF editions."
 }

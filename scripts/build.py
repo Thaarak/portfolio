@@ -77,7 +77,7 @@ def render(path, section, description, body):
   <footer class="foot">
     <div class="shell">
       <p class="elsewhere">{elsewhere}</p>
-      <p class="where">Livermore, then La Jolla. Updated {date.today():%B %Y}.</p>
+      <p class="where">Updated {date.today():%B %Y}.</p>
     </div>
   </footer>
 </body>
@@ -149,7 +149,7 @@ def press_page():
                  f'<p class="years">{e(s["years"])}</p>'
                  f'<div class="body"><div><h2 id="{s["slug"]}-title">{e(s["title"])}</h2>{text}'
                  f'<ul class="sources">{sources}</ul></div>{photo}</div></section>\n')
-    body += f'<p class="aside-note">{e(data["note"])} <a href="mailto:{EMAIL}">Email me</a>.</p>\n</div>'
+    body += f'<p class="aside-note">{e(data["note"])} If you know of a story that belongs here, <a href="mailto:{EMAIL}">email me</a>.</p>\n</div>'
     render('press/index.html', 'Press',
            'Articles, announcements and videos about work Thaarak Sriram has been part of, grouped by story.',
            body)

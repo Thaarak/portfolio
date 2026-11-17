@@ -1,5 +1,5 @@
 {
-  "lead": "Things I’ve built, mostly with friends and mostly in a hurry. Each entry says what the thing does and which part was mine.",
+  "lead": "I built most of these with friends, and several at hackathons. Each entry says what the project does and which part I built.",
   "projects": [
     {
       "slug": "morro",
@@ -14,15 +14,27 @@
         "caption": "Precipitation change 126 hours after seeding, for four methods, over a Middle East drought."
       },
       "paras": [
-        "Morro is a simulator for the people who would have to decide on a weather intervention before a disaster arrives. It forecasts ten days ahead with two AI weather models, GraphCast and NVIDIA Earth2Studio, flags droughts and forming cyclones, then replays the forecast under each of four cloud-seeding methods and ranks them by how much they help.",
-        "I built the perturbation pipeline. Each seeding method becomes a physics-calibrated change to the model’s starting atmosphere, which then carries through the full ten-day rollout. I also trained the Random Forest classifiers that detect drought severity and cyclone formation from ERA5 reanalysis data. Built with Tej Kosaraju and Kieran P."
+        "Morro is a simulator for the people who would have to decide on a weather intervention before a disaster arrives. It forecasts ten days ahead with two AI weather models, GraphCast and NVIDIA Earth2Studio, and flags droughts and forming cyclones. Then it reruns the forecast under each of four cloud-seeding methods and ranks them by how much they help.",
+        "I built the pipeline that applies each seeding method. It turns a method into a physics-calibrated change to the model’s starting atmosphere, and that change carries through the ten-day forecast. I also trained the Random Forest classifiers that detect drought severity and cyclone formation from ERA5 reanalysis data. I built Morro with Tej Kosaraju and Kieran P."
       ],
-      "note": "A weekend simulation. A change in a forecast is not evidence that seeding would work in the real atmosphere.",
+      "note": "We built this in a weekend. A change in a forecast is not evidence that seeding would work in the real atmosphere.",
       "links": [
-        ["Live demo", "https://graphcastdeploy.vercel.app/"],
-        ["Demo video", "https://youtu.be/BBR3-OXCjtU"],
-        ["Devpost", "https://devpost.com/software/morro"],
-        ["Code", "https://github.com/Thaarak/morro"]
+        [
+          "Live demo",
+          "https://graphcastdeploy.vercel.app/"
+        ],
+        [
+          "Demo video",
+          "https://youtu.be/BBR3-OXCjtU"
+        ],
+        [
+          "Devpost",
+          "https://devpost.com/software/morro"
+        ],
+        [
+          "Code",
+          "https://github.com/Thaarak/morro"
+        ]
       ]
     },
     {
@@ -35,16 +47,22 @@
         "width": 1440,
         "height": 900,
         "alt": "OceanOps mission control, with plume controls, a heat map off the California coast and modeled ocean chemistry",
-        "caption": "Mission control. The public demo runs on bundled ocean conditions."
+        "caption": "Mission control in the public demo, which runs on bundled ocean conditions."
       },
       "paras": [
-        "OceanOps is a shipboard planning tool for ocean alkalinity enhancement, a way of removing carbon by making seawater slightly less acidic. Change a vessel’s speed, discharge rate or feedstock and see how the modeled plume and the water chemistry respond, then plan fleet routes around marine traffic and protected areas.",
-        "My part was fleet telemetry over NATS with an HTTP fallback, the AI analysis panel, the map overlays, the simulation flow, and fixes to route rendering. Built with Akshat Choudhari and Yashmit Bhaverisetti."
+        "OceanOps is a shipboard planning tool for ocean alkalinity enhancement, which removes carbon by adding alkaline material to seawater so it absorbs more carbon dioxide. You change a vessel’s speed, discharge rate or feedstock and see how the modeled plume and the water chemistry respond. You can then plan fleet routes around marine traffic and protected areas.",
+        "I built fleet telemetry over NATS with an HTTP fallback, the AI analysis panel, the map overlays and the simulation flow, and I fixed route rendering. I worked on it with Akshat Choudhari and Yashmit Bhaverisetti."
       ],
-      "note": "A planning prototype. The demo’s chemistry thresholds, plume and carbon estimates are illustrative.",
+      "note": "This is a planning prototype. The demo’s chemistry thresholds, plume and carbon estimates are illustrative.",
       "links": [
-        ["Interactive demo", "https://oceanops.vercel.app"],
-        ["Code", "https://github.com/A-Choudhari/LaHacks26"]
+        [
+          "Interactive demo",
+          "https://oceanops.vercel.app"
+        ],
+        [
+          "Code",
+          "https://github.com/A-Choudhari/LaHacks26"
+        ]
       ]
     },
     {
@@ -57,16 +75,22 @@
         "subtitle": "CourseLens for Reviewing AI-Proposed Course Updates",
         "authors": "Andrew Yang, Susana Haing, Thaarak Sriram, Chengyun Xu, Zhiqing Wang, Sam Lau",
         "venue": "SIGCSE Technical Symposium 2027, Sacramento",
-        "caption": "The paper CourseLens accompanies."
+        "caption": "CourseLens accompanies this paper."
       },
       "paras": [
-        "Instructors have started asking AI coding agents to update whole courses: a new library version, a new dataset, a changed syllabus. The agent edits dozens of files, and someone has to check them before students see them. CourseLens lays the proposed edits out in the order the course is taught, shows each one in the rendered lecture or assignment, and uses the agent’s activity log to mark which files it changed, which it only checked, and which it never opened.",
+        "Instructors have started asking AI coding agents to update whole courses. The agent edits many files, and someone has to check them before students see them. CourseLens lays the proposed edits out in the order the course is taught and shows each one in the rendered lecture or assignment. It also reads the agent’s activity log to mark which files the agent changed, which it only checked, and which it never opened.",
         "I’m one of the paper’s six authors and part of the team that built the tool, with Andrew Yang, Susana Haing, Chengyun Xu, Zhiqing Wang and Sam Lau."
       ],
-      "note": "CourseLens never edits course files and doesn’t judge whether a change is correct. The instructor does.",
+      "note": "CourseLens never edits course files. The instructor still decides whether each change is correct.",
       "links": [
-        ["Code", "https://github.com/dstl-lab/CourseLens"],
-        ["Paper listing", "https://conf.researchr.org/track/sigcse-ts-2027/sigcse-ts-2027-Papers-1"]
+        [
+          "Code",
+          "https://github.com/dstl-lab/CourseLens"
+        ],
+        [
+          "Paper listing",
+          "https://conf.researchr.org/track/sigcse-ts-2027/sigcse-ts-2027-Papers-1"
+        ]
       ]
     },
     {
@@ -83,12 +107,18 @@
       },
       "paras": [
         "Deadlines at UC San Diego arrive in several places at once. Triton Hub pulls Canvas assignments, grades and announcements, academic email and a personal calendar into one feed.",
-        "I wired live Canvas data into the assignment and announcement views, and built calendar events and completion tracking on Supabase. Built with Rayirth Dinesh, Siddharth Maddikayala and <a href=\"https://github.com/shrivassudharsan1\">shrivassudharsan1</a>."
+        "I wired live Canvas data into the assignment and announcement views, and built calendar events and completion tracking on Supabase. I worked on it with Rayirth Dinesh, Siddharth Maddikayala and <a href=\"https://github.com/shrivassudharsan1\">shrivassudharsan1</a>."
       ],
       "note": "",
       "links": [
-        ["Interactive demo", "https://triton-hub-showcase.vercel.app/demo"],
-        ["Code", "https://github.com/Thaarak/Triton-Hub"]
+        [
+          "Interactive demo",
+          "https://triton-hub-showcase.vercel.app/demo"
+        ],
+        [
+          "Code",
+          "https://github.com/Thaarak/Triton-Hub"
+        ]
       ]
     },
     {
@@ -97,21 +127,44 @@
       "meta": "A data pipeline in Python",
       "figure": {
         "type": "table",
-        "head": ["Rank", "Example plant", "Capacity", "Score"],
-        "rows": [
-          ["1", "Example Solar B", "950 kW", "72.9"],
-          ["2", "Example Solar A", "6,400 kW", "70.8"],
-          ["3", "Example Solar C", "3,200 kW", "66.7"]
+        "head": [
+          "Rank",
+          "Example plant",
+          "Capacity",
+          "Score"
         ],
-        "caption": "Output of the bundled demo: five fictional installations go in, three qualify, each scored out of 100 by eleven rules."
+        "rows": [
+          [
+            "1",
+            "Example Solar B",
+            "950 kW",
+            "72.9"
+          ],
+          [
+            "2",
+            "Example Solar A",
+            "6,400 kW",
+            "70.8"
+          ],
+          [
+            "3",
+            "Example Solar C",
+            "3,200 kW",
+            "66.7"
+          ]
+        ],
+        "caption": "The bundled demo starts with five fictional installations. Three qualify, and eleven rules score each one out of 100."
       },
       "paras": [
-        "A public registry lists thousands of solar installations. This pipeline validates the records, filters them down to the ones that qualify, and ranks what is left with explicit rules, so every score comes with the points and reasons behind it.",
-        "The design rule is cheapest first. The deterministic ranking runs offline on registry fields alone, and only the shortlist goes on to geospatial matching or optional model-assisted scoring. Ambiguous matches are left unresolved."
+        "This pipeline takes a solar registry export, validates the records, and filters them down to the installations that qualify. It ranks what is left with explicit rules, so every score comes with the points and reasons behind it.",
+        "I designed it to run the cheapest step first. The rule-based ranking runs offline on registry fields alone, and only the shortlist goes on to geospatial matching or optional model-assisted scoring. When a match is ambiguous, the pipeline leaves it unresolved."
       ],
-      "note": "The public repository contains synthetic examples only. The scores illustrate a screening method, not investment advice.",
+      "note": "The public repository contains only synthetic examples. The scores show how the screening method works and are not investment advice.",
       "links": [
-        ["Code", "https://github.com/Thaarak/solar-registry-screening"]
+        [
+          "Code",
+          "https://github.com/Thaarak/solar-registry-screening"
+        ]
       ]
     },
     {
@@ -124,15 +177,18 @@
         "width": 1280,
         "height": 887,
         "alt": "Arnold showing a meal draft with portions and nutrition estimates, ready for review",
-        "caption": "A meal entry waits for review before it is saved."
+        "caption": "Arnold shows a meal entry for review before saving it."
       },
       "paras": [
-        "Arnold is a fitness journal you talk to. Describe a meal or a workout in plain English, check what Arnold understood, and only then save it.",
-        "I added plain-English meal and workout logging, USDA food lookup, exercise search and the voice flow to our hackathon prototype. For the public version I rebuilt logging so it previews portions and nutrients before anything is saved. The original was built with Shrish Premkrishna, Kenny and Jello."
+        "Arnold is a fitness journal you talk to. You describe a meal or a workout in plain English, check what Arnold understood, then save it.",
+        "I added plain-English meal and workout logging, USDA food lookup, exercise search and the voice flow to our hackathon prototype. For the public version I rebuilt logging so it previews portions and nutrients before it saves anything. Shrish Premkrishna, Kenny, Jello and I built the original."
       ],
       "note": "Nutrition values are estimates.",
       "links": [
-        ["Code", "https://github.com/Thaarak/arnold-showcase"]
+        [
+          "Code",
+          "https://github.com/Thaarak/arnold-showcase"
+        ]
       ]
     },
     {
@@ -148,19 +204,38 @@
         "caption": "The demo uses fictional venues and never sends anything."
       },
       "paras": [
-        "Wendy keeps venue search, guest lists and planning conversations in one place. Set a budget and a guest count, shortlist venues, and it drafts an inquiry from details already in the conversation.",
-        "I built the venue-search tool, connected it to chat, and wrote the reservation-request flow that collects event details and drafts the inquiry. Built with Shrish Premkrishna, Aryaman Gandhi and Kenny."
+        "Wendy keeps venue search, guest lists and planning conversations in one place. You set a budget and a guest count and shortlist venues, and Wendy drafts an inquiry from details already in the conversation.",
+        "I built the venue-search tool, connected it to chat, and wrote the reservation-request flow that collects event details and drafts the inquiry. I worked on it with Shrish Premkrishna, Aryaman Gandhi and Kenny."
       ],
       "note": "",
       "links": [
-        ["Code", "https://github.com/Thaarak/wendy-showcase"]
+        [
+          "Code",
+          "https://github.com/Thaarak/wendy-showcase"
+        ]
       ]
     }
   ],
   "smaller": [
-    ["DSTL Chat", "https://github.com/Thaarak/dstl-onboarding-chat", "My onboarding project at the teaching lab: a chat app with saved conversations, in React, FastAPI and SQLite."],
-    ["Flask Reddit", "https://github.com/Thaarak/flask-reddit-demo", "A small link feed with voting and hidden posts. Another onboarding exercise."],
-    ["GravitechX 2023", "https://github.com/Thaarak/2023-Coding", "A fork of the Java code for my high school robotics team’s 2023 robot."],
-    ["This site", "https://github.com/Thaarak/portfolio", "Plain HTML and CSS, generated by a short Python script."]
+    [
+      "DSTL Chat",
+      "https://github.com/Thaarak/dstl-onboarding-chat",
+      "A chat app with saved conversations, built in React, FastAPI and SQLite as my onboarding project at the teaching lab."
+    ],
+    [
+      "Flask Reddit",
+      "https://github.com/Thaarak/flask-reddit-demo",
+      "A small link feed with voting and hidden posts, from another onboarding exercise."
+    ],
+    [
+      "GravitechX 2023",
+      "https://github.com/Thaarak/2023-Coding",
+      "A fork of the Java code for my high school robotics team’s 2023 robot."
+    ],
+    [
+      "This site",
+      "https://github.com/Thaarak/portfolio",
+      "Plain HTML and CSS, generated by a short Python script."
+    ]
   ]
 }
